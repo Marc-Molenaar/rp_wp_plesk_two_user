@@ -141,7 +141,7 @@ say "Review the plan and take a backup before running without --dry-run."
 # changing ownership/permissions. Only directory creation may occur on failure.
 for path in "${WRITABLE_PATHS[@]}"; do run mkdir -p -- "$path"; done
 if [[ "$DRY_RUN" -eq 0 ]]; then
-  for path in "$RUNTIME_HOME" "${WRITABLE_PATHS[@]}"; do test_acl_on_path "$path"; done
+  for path in "$RUNTIME_HOME" "$VHOSTROOT" "${WRITABLE_PATHS[@]}"; do test_acl_on_path "$path"; done
 fi
 
 if [[ "$DEPLOY_EXISTS" -eq 0 ]]; then
